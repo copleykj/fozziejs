@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"rootDir": "src",
+		"strict": true,
+		"moduleResolution": "node",
+		"noImplicitAny": true,
+		"forceConsistentCasingInFileNames": true,
+		"downlevelIteration": true,
+		"esModuleInterop": true,
+		"declaration": true,
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
+		"sourceMap": true,
+		"skipLibCheck": false,
+		"resolveJsonModule": true
+	},
+	"exclude": ["node_modules", "out", "dist"]
+}
