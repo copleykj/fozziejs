@@ -24,9 +24,10 @@
   "scripts": {
     "lint": "eslint src",
     "test": "jest",
-    "prepublish": "npm run bundle",
+    "prepublish": "npm run build",
     "build": "microbundle",
-    "dev": "microbundle watch"
+    "dev": "microbundle watch",
+    "publish-release": "changeset tag && npm publish && git push --follow-tags",
   },
   "devDependencies": {
     "@eslint/js": "^9.5.0",
