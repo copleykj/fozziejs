@@ -71,6 +71,10 @@ export interface CustomTimeRange {
 	end: string | Date;
 }
 
+export interface SummariesParams extends CustomTimeRange {
+  project?: string;
+}
+
 export type APIResponse =
 	| InsightsWeekdaysResponse
 	| InsightsBestDayResponse

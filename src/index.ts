@@ -18,6 +18,7 @@ import {
   InsightsWeekdaysResponse,
   ProjectsResponse,
   StatsResponse,
+  SummariesParams,
   SummariesResponse,
 } from './schema';
 
@@ -69,7 +70,7 @@ export class WakaTime {
    * @returns A promise that resolves to the JSON response.
    * @throws An error if the URL or headers are missing.
    */
-  private async get(url: string, headers: HeadersInit): Promise<APIResponse> {
+  private async get (url: string, headers: HeadersInit): Promise<APIResponse> {
     if (!url || !headers) {
       throw new Error('Missing url or headers');
     }
@@ -142,19 +143,11 @@ export class WakaTime {
    * @param range The date range for the summaries.
    * @returns A promise that resolves to the summaries JSON data.
    */
-  async getSummaries(range: CustomTimeRange): Promise<SummariesResponse> {
-    let start = '';
-    let end = '';
+  async getSummaries(params: SummariesParams): Promise<SummariesResponse> {
+    const start = this.getDateString(params.start);
+    const end = this.getDateString(params.end);
 
-    if ('start' in range && 'end' in range) {
-      start = this.getDateString(range.start);
-      end = this.getDateString(range.end);
-    } else {
-      start = this.getDateString(range);
-      end = this.getDateString(range);
-    }
-
-    const { url, headers } = this.getApiOptions('/users/current/summaries', { start, end });
+    const { url, headers } = this.getApiOptions('/users/current/summaries', { ...params, start, end });
     return this.get(url, headers) as Promise<SummariesResponse>;
   }
 
